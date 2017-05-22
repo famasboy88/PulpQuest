@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
     public float upForce = 200f;
+    public AudioClip flapSound;
+    public AudioClip die;
 
     private bool isDead=false;
     private Rigidbody2D rb2d;
@@ -13,6 +15,8 @@ public class PlayerController : MonoBehaviour {
 	void Start () {
         rb2d = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+        
+        //transform.GetComponent<AudioSource>().clip = flapSound;
 	}
 	
 	// Update is called once per frame
@@ -21,14 +25,32 @@ public class PlayerController : MonoBehaviour {
             if (Input.GetMouseButtonDown(0)) {
                 rb2d.velocity =new Vector2(0f,0f);
                 rb2d.AddForce(new Vector2(0f,upForce));
+                transform.GetComponent<AudioSource>().PlayOneShot(flapSound);
                 anim.SetTrigger("Flap");
             }
         }
-	}
+        if (transform.position.y>=3.8f) {
+            KillPlayer();
+        }
+        
+    }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        isDead = true;
-        anim.SetTrigger("Die");
+        this.KillPlayer();
+    }
+
+    private void KillPlayer()
+    {
+        if (isDead==false) {
+            rb2d.velocity = new Vector2(0f, 0f);
+            isDead = true;
+            anim.SetTrigger("Die");
+            GameController.instance.PlayerDied();
+            transform.GetComponent<AudioSource>().PlayOneShot(die);
+            
+        }
+        
+       
     }
 }
