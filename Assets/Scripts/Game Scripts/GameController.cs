@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class GameController : MonoBehaviour {
 
+    public AudioClip points;
     public static GameController instance;
     public GameObject GameOverText;
     public bool GameOver = false;
@@ -58,7 +59,7 @@ public class GameController : MonoBehaviour {
         if (GameOver==true) {
             return;
         }
-
+        this.transform.GetComponent<AudioSource>().PlayOneShot(points);
         PlayerScore++;
         scoreText.text = "Score: " + PlayerScore.ToString();
     }
