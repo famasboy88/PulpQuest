@@ -91,9 +91,9 @@ GameObject:
   m_Component:
   - component: {fileID: 24}
   - component: {fileID: 78}
-  - component: {fileID: 79}
   - component: {fileID: 80}
   - component: {fileID: 44}
+  - component: {fileID: 79}
   m_Layer: 0
   m_Name: GameControl
   m_TagString: Untagged
@@ -1706,10 +1706,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc85d831f1651a14699caedc8f84ed2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefab: {fileID: 1180598147754156, guid: a9886d25bff0bcb4987d5ac711bc8c3c, type: 2}
-  columnPoolSize: 5
-  columnMin: -2
-  columnMax: 1
+  prefab:
+  - {fileID: 1008336294372288, guid: cadb74c4624605746b0e8f33c9354b62, type: 2}
+  - {fileID: 1394226484893416, guid: 3588a1d7263c4f545b33324fa2d7e2fc, type: 2}
+  - {fileID: 1983831338512728, guid: 30809a9be10375a43b3ca771e6796f0f, type: 2}
+  columnMin: -1
+  columnMax: 3.5
   spawnRate: 4
 --- !u!114 &80
 MonoBehaviour:

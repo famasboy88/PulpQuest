@@ -21,10 +21,7 @@ public class ColumnScore : MonoBehaviour {
         } else {
             this.transform.Rotate(0, 0, -speed);
         }
-
-        if (GameController.instance.GameOver == false) {
-
-        }
+			
 
     }
 
