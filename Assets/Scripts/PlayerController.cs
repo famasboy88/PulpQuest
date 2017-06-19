@@ -22,7 +22,7 @@ public class PlayerController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         if (isDead==false) {
-            if (Input.GetMouseButtonDown(0)) {
+            if (Input.GetMouseButtonDown(0) && PlayerHealth.instance.hitpoint>0f) {
                 rb2d.velocity =new Vector2(0f,0f);
                 rb2d.AddForce(new Vector2(0f,upForce));
                 transform.GetComponent<AudioSource>().PlayOneShot(flapSound);
