@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PoolController : MonoBehaviour {
-	public List<GameObject> prefab;
+	public List<GameObject> prefabLevel = new List<GameObject> ();
     
     public float columnMin = -1f;
     public float columnMax = 3.5f;
@@ -17,35 +17,55 @@ public class PoolController : MonoBehaviour {
 
 	//////////////////////////////
 	private int randomLvl = 0;
-
+	private int currentLevel;
+	private bool LevelisLoaded = false;
+	private bool LevelisStillAlive = false;
 
 	// Use this for initialization
 	void Start () {
-		/*column = new GameObject[columnPoolSize];
-        for (int i=0;i<columnPoolSize;i++) {
-            column[i] = (GameObject)Instantiate(prefab,objectPoolPosition,Quaternion.identity);
-        }*/
-		
-		SpawnRandomObj (1);
+		Object[] ListOfPrefabs = Resources.LoadAll ("NormalLevelPrefabs", typeof(GameObject));
+		int i = 0;
+		foreach(GameObject objList in ListOfPrefabs){
+			GameObject myObj = Instantiate (objList) as GameObject;
+			myObj.transform.position = objectPoolPosition;
+			prefabLevel.Add (myObj);
+		}
+			
+		SpawnObj (0,new Vector3 (9.8f,1.13f,1.74f));
+
 	}
 
-	private void SpawnRandomObj(int num){
-		int random = (num==1)?0:Random.Range (0, 2);
-		GameObject obj = Instantiate (prefab [random]) as GameObject;
-		obj.transform.position = new Vector3 (9.75f, 1.30f,2f);
+	private void SpawnObj(int num,Vector3 spawnPosition){
+		if(LevelisLoaded==true){
+			return;
+		}else{
+			prefabLevel [num].gameObject.transform.position = spawnPosition;
+			LevelisLoaded = true;
+			currentLevel = num;
+			foreach(Transform child in prefabLevel[num].transform){
+				child.gameObject.SetActive (true);
+			}
+		}
 	}
 	
 	// Update is called once per frame
-	/*void Update () {
-        timeLastSpawned += Time.deltaTime;
-        if (GameController.instance.GameOver == false && timeLastSpawned >= spawnRate) {
-            timeLastSpawned = 0;
-            float spawnYposition = Random.Range(columnMin,columnMax);
-            column[currentColumn].transform.position = new Vector2(spawnXposition,spawnYposition);
-            currentColumn++;
-            if (currentColumn>=columnPoolSize) {
-                currentColumn = 0; 
-            }
-        }
-	}*/
+	void Update () {
+		if(LevelisLoaded!=true){
+			int random = Random.Range (0, prefabLevel.Count);
+			while(random==currentLevel){
+				random = Random.Range (0, prefabLevel.Count);
+			}
+			SpawnObj (random,new Vector3(prefabLevel[currentLevel].transform.position.x+15f,1.13f,1.74f));
+		}
+
+
+
+
+		if(prefabLevel[currentLevel].transform.position.x<6f){
+			LevelisLoaded = false;
+		}
+
+		print (currentLevel+" "+LevelisLoaded+" "+prefabLevel[currentLevel].transform.position.x+" "+LevelisStillAlive);
+
+	}
 }
