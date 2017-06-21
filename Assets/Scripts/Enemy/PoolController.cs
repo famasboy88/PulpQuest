@@ -52,10 +52,12 @@ public class PoolController : MonoBehaviour {
 	void Update () {
 		if(LevelisLoaded!=true){
 			int random = Random.Range (0, prefabLevel.Count);
-			while(random==currentLevel){
+			if(random==currentLevel){
 				random = Random.Range (0, prefabLevel.Count);
+			}else{
+				SpawnObj (random,new Vector3(prefabLevel[currentLevel].transform.position.x+15f,1.13f,1.74f));
 			}
-			SpawnObj (random,new Vector3(prefabLevel[currentLevel].transform.position.x+15f,1.13f,1.74f));
+
 		}
 
 
