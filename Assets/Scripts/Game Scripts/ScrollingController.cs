@@ -7,16 +7,27 @@ public class ScrollingController : MonoBehaviour {
     private Rigidbody2D rb2d;
     public float speed = -1.5f;
 
-    // Use this for initialization
-    void Start () {
-        rb2d = GetComponent<Rigidbody2D>();
-        rb2d.velocity = new Vector2(speed,0f);
+	void Start()
+	{
+		StartMove();
+	}
+
+	public void StartMove()
+	{
+		if(GameController.instance.GameOver==false){
+			StartCoroutine("MoveMenu");
+		}
+
+	}
+
+	IEnumerator MoveMenu()
+	{
+		
+		rb2d = GetComponent<Rigidbody2D>();
+		rb2d.velocity = new Vector2(speed,0f);
+
+		yield return new WaitForSeconds (0f);
 	}
 	
-	// Update is called once per frame
-	void Update () {
-        if (GameController.instance.GameOver==true && gameObject.tag!="Clouds") {
-            rb2d.velocity = new Vector2(0f,0f);
-        }
-	}
 }
+

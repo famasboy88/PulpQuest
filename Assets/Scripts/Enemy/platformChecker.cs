@@ -3,14 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class platformChecker : MonoBehaviour {
-
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
 	// Update is called once per frame
 	void Update () {
-		
+		if(this.gameObject.transform.position.x<-12f){
+			this.gameObject.SetActive (false);
+		}
 	}
 }
