@@ -46,9 +46,9 @@ public class GameController : MonoBehaviour {
                 cooldownTimer = 0f;
             }
         }
-        if (GameOver==false) {
-            PlayerHealth.instance.decrease(Time.deltaTime*5f);
-        }
+		/*if (GameOver==false) {
+            /PlayerHealth.instance.decrease(Time.deltaTime*5f);
+        }*/
         
 	}
 

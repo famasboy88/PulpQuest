@@ -52,22 +52,18 @@ public class PoolController : MonoBehaviour {
 	void Update () {
 		if(LevelisLoaded!=true){
 			int random = Random.Range (0, prefabLevel.Count);
-			if(random==currentLevel){
+			if(random==currentLevel || prefabLevel[random].transform.position.x>-12f){
 				random = Random.Range (0, prefabLevel.Count);
 			}else{
 				SpawnObj (random,new Vector3(prefabLevel[currentLevel].transform.position.x+15f,1.13f,1.74f));
 			}
 
 		}
-
-
-
-
 		if(prefabLevel[currentLevel].transform.position.x<6f){
 			LevelisLoaded = false;
 		}
 
-		print (currentLevel+" "+LevelisLoaded+" "+prefabLevel[currentLevel].transform.position.x+" "+LevelisStillAlive);
+
 
 	}
 }
