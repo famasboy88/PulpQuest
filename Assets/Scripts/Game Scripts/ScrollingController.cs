@@ -28,6 +28,13 @@ public class ScrollingController : MonoBehaviour {
 
 		yield return new WaitForSeconds (0f);
 	}
+
+	void Update(){
+		if (GameController.instance.GameOver == true) {
+			rb2d.velocity = new Vector2(0f,0f);
+		}
+	}
+
 	
 }
 
