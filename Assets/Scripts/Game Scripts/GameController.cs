@@ -47,7 +47,7 @@ public class GameController : MonoBehaviour {
             }
         }
 		if (GameOver==false) {
-            PlayerHealth.instance.decrease(Time.deltaTime*5f);
+            PlayerHealth.instance.decrease(Time.deltaTime*10f);
         }
         
 	}
@@ -65,7 +65,7 @@ public class GameController : MonoBehaviour {
         this.transform.GetComponent<AudioSource>().PlayOneShot(points);
         PlayerScore++;
         scoreText.text = "Score: " + PlayerScore.ToString();
-        PlayerHealth.instance.increase(10f);
+        PlayerHealth.instance.increase(8f);
     }
 
     public void PlayerDied()

@@ -30,7 +30,7 @@ public class ScrollingController : MonoBehaviour {
 	}
 
 	void Update(){
-		if (GameController.instance.GameOver == true) {
+		if (GameController.instance.GameOver == true && GameController.instance!=null) {
 			rb2d.velocity = new Vector2(0f,0f);
 		}
 	}

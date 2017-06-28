@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
-    public float upForce = 200f;
+    public float upForce = 300f;
     public AudioClip flapSound;
     public AudioClip die;
 
     private bool isDead=false;
     private Rigidbody2D rb2d;
     private Animator anim;
-
+	Vector3 birdRotation = Vector3.zero;
 	// Use this for initialization
 	void Start () {
         rb2d = GetComponent<Rigidbody2D>();
@@ -28,11 +28,30 @@ public class PlayerController : MonoBehaviour {
                 transform.GetComponent<AudioSource>().PlayOneShot(flapSound);
                 anim.SetTrigger("Flap");
             }
+			bool goingUp;
+			goingUp = (rb2d.velocity.y > 0) ? true : false;
+
+
+			float degreesToAdd = 0;
+			switch(goingUp){
+			case true:
+				degreesToAdd = 5 * 1f;
+				break;
+			case false:
+				degreesToAdd = -3 * 0.4f;
+				break;
+			default:
+				break;
+			}
+
+			birdRotation = new Vector3 (0,0,Mathf.Clamp (birdRotation.z+degreesToAdd,-95f,15f));
+			transform.eulerAngles = birdRotation;
         }
         if (transform.position.y>=3.8f) {
             KillPlayer();
         }
-        
+
+
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
