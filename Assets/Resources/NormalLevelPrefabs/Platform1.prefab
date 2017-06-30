@@ -21,6 +21,8 @@ GameObject:
   - component: {fileID: 4577804743241566}
   - component: {fileID: 114605361222327514}
   - component: {fileID: 50920802584396200}
+  - component: {fileID: 61267013984884586}
+  - component: {fileID: 114054565080054142}
   m_Layer: 0
   m_Name: Platform1
   m_TagString: Untagged
@@ -887,6 +889,31 @@ PolygonCollider2D:
       - {x: 0.44, y: 4.47}
       - {x: 0.45999998, y: 4.47}
       - {x: 0.69, y: 4.61}
+--- !u!61 &61267013984884586
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1008336294372288}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 6.565387, y: -0.2712574}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.5276151, y: 2.4222488}
+  m_EdgeRadius: 0
 --- !u!114 &114027500914925148
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -896,6 +923,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 087f7060cf69f01449f1ae1faabadd3c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114054565080054142
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1008336294372288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc3577921c3bc024898b3b149cfe49c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &114110865272082020
@@ -967,7 +1005,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5882b82f959772b4bba2aa8782fcbf98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: -2.3
+  speed: -2.5
 --- !u!114 &114767120582123690
 MonoBehaviour:
   m_ObjectHideFlags: 1

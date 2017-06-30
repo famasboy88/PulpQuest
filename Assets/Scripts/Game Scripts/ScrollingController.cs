@@ -30,7 +30,7 @@ public class ScrollingController : MonoBehaviour {
 	}
 
 	void Update(){
-		if (GameController.instance.GameOver == true && GameController.instance!=null) {
+		if (GameObject.FindGameObjectWithTag ("Player").GetComponent<PlayerController> ().isDead == true) {
 			rb2d.velocity = new Vector2(0f,0f);
 		}
 	}

@@ -7,7 +7,7 @@ public class PlayerController : MonoBehaviour {
     public AudioClip flapSound;
     public AudioClip die;
 
-    private bool isDead=false;
+	public bool isDead=false;
     private Rigidbody2D rb2d;
     private Animator anim;
 	Vector3 birdRotation = Vector3.zero;
@@ -35,10 +35,10 @@ public class PlayerController : MonoBehaviour {
 			float degreesToAdd = 0;
 			switch(goingUp){
 			case true:
-				degreesToAdd = 5 * 1f;
+				degreesToAdd = 5 * 1.5f;
 				break;
 			case false:
-				degreesToAdd = -3 * 0.4f;
+				degreesToAdd = -3 * 1f;
 				break;
 			default:
 				break;
