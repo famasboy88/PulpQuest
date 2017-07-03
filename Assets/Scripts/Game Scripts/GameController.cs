@@ -42,7 +42,7 @@ public class GameController : MonoBehaviour {
         if (GameOver==true) {
             cooldownTimer += Time.deltaTime;
             if (Input.GetMouseButtonDown(0) && cooldownTimer >= cooldown) {
-                Restart();
+				this.gameObject.GetComponent <SceneManagerController>().GotoPreStart ();
                 cooldownTimer = 0f;
             }
         }
@@ -54,7 +54,7 @@ public class GameController : MonoBehaviour {
 
     private void Restart()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+		SceneManager.LoadScene (1);
     }
 
     public void PlayerScored()

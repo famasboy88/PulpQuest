@@ -38,7 +38,7 @@ public class PlayerController : MonoBehaviour {
 				degreesToAdd = 5 * 1.5f;
 				break;
 			case false:
-				degreesToAdd = -3 * 1f;
+				degreesToAdd = -3 * 0.4f;
 				break;
 			default:
 				break;
