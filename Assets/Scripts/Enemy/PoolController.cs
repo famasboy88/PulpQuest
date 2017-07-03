@@ -5,8 +5,8 @@ using UnityEngine;
 public class PoolController : MonoBehaviour {
 	public List<GameObject> prefabLevel = new List<GameObject> ();
     
-    public float columnMin = -1f;
-    public float columnMax = 2.5f;
+	public float columnMin = -1.5f;
+	public float columnMax = 1f;
 
     private Vector2 objectPoolPosition = new Vector2(-15f,-25f);
 
@@ -55,7 +55,9 @@ public class PoolController : MonoBehaviour {
 			if(random==currentLevel || prefabLevel[random].transform.position.x>-12f){
 				random = Random.Range (0, prefabLevel.Count);
 			}else{
-				SpawnObj (random,new Vector3(prefabLevel[currentLevel].transform.position.x+9.8f,Random.Range (columnMin,columnMax),1.74f));
+				float range = Random.Range (columnMax, columnMin);
+				SpawnObj (random,new Vector3(prefabLevel[currentLevel].transform.position.x+9.8f,range,1.74f));
+				print (range);
 			}
 		}
 		if(prefabLevel[currentLevel].transform.position.x<6f){

@@ -47,7 +47,7 @@ public class GameController : MonoBehaviour {
             }
         }
 		if (GameOver==false) {
-            PlayerHealth.instance.decrease(Time.deltaTime*10f);
+            //PlayerHealth.instance.decrease(Time.deltaTime*10f);
         }
         
 	}
