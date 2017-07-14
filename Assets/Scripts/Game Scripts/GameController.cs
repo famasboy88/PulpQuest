@@ -39,17 +39,19 @@ public class GameController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (GameOver==true) {
-            cooldownTimer += Time.deltaTime;
-            if (Input.GetMouseButtonDown(0) && cooldownTimer >= cooldown) {
-				this.gameObject.GetComponent <SceneManagerController>().GotoPreStart ();
-                cooldownTimer = 0f;
-            }
-        }
-		if (GameOver==false) {
-            PlayerHealth.instance.decrease(Time.deltaTime*10f);
-        }
-        
+		if (GameOver == true) {
+			cooldownTimer += Time.deltaTime;
+			if (Input.GetMouseButtonDown (0) && cooldownTimer >= cooldown) {
+				this.gameObject.GetComponent <SceneManagerController> ().GotoPreStart ();
+				cooldownTimer = 0f;
+			}
+		}
+		if (GameOver == false) {
+			PlayerHealth.instance.decrease (Time.deltaTime * 10f);
+		}
+		if(PlayerHealth.instance.hitpoint>=200){
+			print ("Initiate combo");
+		}
 	}
 
     private void Restart()

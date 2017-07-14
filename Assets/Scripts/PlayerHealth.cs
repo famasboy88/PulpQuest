@@ -10,8 +10,8 @@ public class PlayerHealth : MonoBehaviour {
     public Text ratioText;
 
 
-    public float hitpoint = 150f;
-    private float maxHitpoint = 150f;
+    public float hitpoint = 100f;
+    private float maxHitpoint = 200f;
 
     private void Awake()
     {
