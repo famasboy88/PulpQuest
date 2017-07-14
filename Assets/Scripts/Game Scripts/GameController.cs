@@ -7,15 +7,19 @@ using UnityEngine.UI;
 public class GameController : MonoBehaviour {
 
     public AudioClip points;
+	public GameObject Player;
     public static GameController instance;
     public GameObject GameOverText;
     public bool GameOver = false;
     public float speed = -1.5f;
     public Text scoreText;
     public Text highscore;
+	public Text comboScoreText;
     public GameObject glasses;
     public GameObject accessories;
     private int PlayerScore = 0;
+	private int comboScore;
+	public Text comboScoreTxt;
     private float cooldown =1f;
     private float cooldownTimer = 0f;
 
@@ -30,6 +34,7 @@ public class GameController : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
+		comboScore = 0; 
         if (Random.value > 0.5f) {
             accessories.SetActive(true);
         } else {
@@ -83,4 +88,9 @@ public class GameController : MonoBehaviour {
         GameOver = true;
         this.GetComponent<FlashController>().flashNow();
     }
+
+	public void AddCombo(){
+		comboScore++;
+		comboScoreTxt.text = comboScore.ToString ();
+	}
 }

@@ -8,7 +8,7 @@ public class SpliffController : MonoBehaviour {
     private void Update()
     {
         if (spliffs.transform.position.x<=-6.55f) {
-            spliffs.SetActive(true);
+            spliffs.SetActive(false);
             spliffs.transform.position = new Vector2(8.89f,2f);
         }
     }
