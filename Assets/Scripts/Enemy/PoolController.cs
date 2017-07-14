@@ -94,5 +94,6 @@ public class PoolController : MonoBehaviour {
 		SC.transform.position = prefabLevel[num].transform.position;
 		SC.transform.position = new Vector3(SC.transform.position.x,SC.transform.position.y,1.74f);
 		SCisLoaded = true;
+
 	}
 }
