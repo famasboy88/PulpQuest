@@ -29,10 +29,11 @@ public class SceneManagerController : MonoBehaviour {
 
 	IEnumerator Fading(int scene){
 		anim.SetBool ("Fade",true);
-		yield return new WaitUntil (() => black.color.a == 1);
+		yield return new WaitUntil (() => black.color.a == 1f);
 
 		if(scene==1){
 			SceneManager.LoadScene("MainScene");
+			yield return new WaitForSeconds (.1f);
 		}else if(scene==2){
 			SceneManager.LoadScene ("PreStart");
 		}

@@ -28,22 +28,9 @@ public class PlayerController : MonoBehaviour {
                 transform.GetComponent<AudioSource>().PlayOneShot(flapSound);
                 anim.SetTrigger("Flap");
             }
-			bool goingUp;
-			goingUp = (rb2d.velocity.y > 0) ? true : false;
-
-
+				
 			float degreesToAdd = 0;
-			switch(goingUp){
-			case true:
-				degreesToAdd = 5 * 1.5f;
-				break;
-			case false:
-				degreesToAdd = -3 * 0.45f;
-				break;
-			default:
-				break;
-			}
-
+			degreesToAdd = (rb2d.velocity.y > 0)? 5 * 1.5f : -3 * 0.8f;
 			birdRotation = new Vector3 (0,0,Mathf.Clamp (birdRotation.z+degreesToAdd,-95f,15f));
 			transform.eulerAngles = birdRotation;
         }
@@ -66,8 +53,7 @@ public class PlayerController : MonoBehaviour {
             isDead = true;
             anim.SetTrigger("Die");
             GameController.instance.PlayerDied();
-            transform.GetComponent<AudioSource>().PlayOneShot(die);
-            
+            transform.GetComponent<AudioSource>().PlayOneShot(die);     
         }
         
        
