@@ -72,14 +72,14 @@ public class GameController : MonoBehaviour {
 
     public void PlayerDied()
     {
-        glasses.AddComponent<Rigidbody2D>();
+		/*glasses.AddComponent<Rigidbody2D>();
         if (accessories!=null) {
             accessories.AddComponent<Rigidbody2D>();
             accessories.AddComponent<PolygonCollider2D>();
         }
         if (PlayerScore > PlayerPrefs.GetInt("Highscore")) {
             PlayerPrefs.SetInt("Highscore",PlayerScore);
-        }
+        }*/
         highscore.text = "HighScore: " + PlayerPrefs.GetInt("Highscore").ToString();
         GameOverText.SetActive(true);
         GameOver = true;

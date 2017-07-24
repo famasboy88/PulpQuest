@@ -35,7 +35,13 @@ public class PlayerController : MonoBehaviour {
 			transform.eulerAngles = birdRotation;
         }
         if (transform.position.y>=3.8f) {
-            KillPlayer();
+			if (isDead==false) {
+				rb2d.velocity = new Vector2(0f, 0f);
+				isDead = true;
+				anim.SetTrigger("Die");
+				GameController.instance.PlayerDied();
+				transform.GetComponent<AudioSource>().PlayOneShot(die);     
+			}
         }
 
 
@@ -43,19 +49,12 @@ public class PlayerController : MonoBehaviour {
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        this.KillPlayer();
-    }
-
-    private void KillPlayer()
-    {
-        if (isDead==false) {
-            rb2d.velocity = new Vector2(0f, 0f);
-            isDead = true;
-            anim.SetTrigger("Die");
-            GameController.instance.PlayerDied();
-            transform.GetComponent<AudioSource>().PlayOneShot(die);     
-        }
-        
-       
+		if (isDead==false) {
+			rb2d.velocity = new Vector2(0f, 0f);
+			isDead = true;
+			anim.SetTrigger("Die");
+			GameController.instance.PlayerDied();
+			transform.GetComponent<AudioSource>().PlayOneShot(die);     
+		}
     }
 }
