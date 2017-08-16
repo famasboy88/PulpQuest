@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Playables;
 
 public class PlayerHealth : MonoBehaviour {
     public static PlayerHealth instance;
@@ -22,6 +23,9 @@ public class PlayerHealth : MonoBehaviour {
     public float hitpoint = 100f;
     private float maxHitpoint = 200f;
 	private float speedStrobe;
+
+
+
 
     private void Awake()
     {
@@ -73,12 +77,14 @@ public class PlayerHealth : MonoBehaviour {
 				every = 1.5f;
 				speedStrobe = 0.5f;
 				ColorLerping (color2, bg1, bg2);
-			}else if(hitpoint>=160 && hitpoint<201){
+			}else if(hitpoint>=160 && hitpoint<200){
 				every = 1f;
 				speedStrobe = 0.8f;
 				ColorLerping (color3, bg1, bg2);
 			}
+
 		}
+
 
 	}
 
@@ -86,7 +92,7 @@ public class PlayerHealth : MonoBehaviour {
     public void decrease(float num)
     {
         hitpoint -= num;
-        if (hitpoint<0) {
+		if (hitpoint<0) {
             hitpoint = 0;
         }
 

@@ -26,6 +26,7 @@ public class SceneManagerController : MonoBehaviour {
 		StartCoroutine (Fading (2));
 
 	}
+		
 
 	IEnumerator Fading(int scene){
 		anim.SetBool ("Fade",true);

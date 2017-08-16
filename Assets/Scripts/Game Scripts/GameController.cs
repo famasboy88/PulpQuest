@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.Playables;
 
 public class GameController : MonoBehaviour {
 
@@ -18,6 +19,8 @@ public class GameController : MonoBehaviour {
     private int PlayerScore = 0;
     private float cooldown =1f;
     private float cooldownTimer = 0f;
+	private bool played=false;
+	public GameObject player;
 
     private void Awake()
     {
@@ -47,11 +50,30 @@ public class GameController : MonoBehaviour {
 			}
 		}
 		if (GameOver == false) {
-			PlayerHealth.instance.decrease (Time.deltaTime * 10f);
+			if(PlayerHealth. instance.hitpoint!=200f){
+				PlayerHealth.instance.decrease (Time.deltaTime * 10f);
+			}else{
+				if(played==false){
+					//player.GetComponent <PlayableDirector>().Play ();
+					player.GetComponent <PlayerController>().enabled=false;
+					player.GetComponent <PolygonCollider2D>().enabled=false;
+					ScrollingController[] scripts = GameObject.FindObjectsOfType (typeof(ScrollingController)) as ScrollingController[];
+					foreach(ScrollingController s in scripts ){
+						s.gameObject.GetComponent <Rigidbody2D>().velocity = new Vector2(0,0);
+					}
+					player.GetComponent <PlayableDirector>().Play ();
+					StartCoroutine (IntoSpace ((float)player.GetComponent <PlayableDirector>().duration-0.8f));
+					played = true;
+				}
+			}
+
 		}
-		if(PlayerHealth.instance.hitpoint>=200){
-			print ("Initiate combo");
-		}
+
+	}
+
+	IEnumerator IntoSpace(float sec){
+		yield return new WaitForSeconds (sec);
+		this.gameObject.GetComponent <SceneManagerController>().GotoPreStart ();
 	}
 
     private void Restart()
